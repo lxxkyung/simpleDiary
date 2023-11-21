@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 
-const DiaryEditor = () => {
+const DiaryEditor = ({onCreate}) => {
     const authorInput = useRef();
     const contentInput = useRef();
 
@@ -29,7 +29,16 @@ const DiaryEditor = () => {
             return;
         }
 
-        alert("저장 성공")
+        //입력한 값으로 추가
+        onCreate(state.author, state.content, state.emotion)
+        alert("저장 성공");
+
+        //초기화
+        setState({
+            author: "",
+            content: "",
+            emotion: 1
+        })
     }
 
     return <div className="DiaryEditor">
